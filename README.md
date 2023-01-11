@@ -1,6 +1,10 @@
-## Getting Started
+# Project Info-Task - Lotto Generator with Java
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Create a LottoGenerator class with a method generateNumbers, which returns an .
+array with 6 random numbers from 1 to 49.
+Call the method from your main class and print the result. When running the main method 
+multiple times you should see different results.
+Bonus: Make sure that the returned array contains unique values (no duplicates) .
 
 ## Folder Structure
 
