@@ -1,19 +1,22 @@
 import java.util.Random;
 
-import java.util.Set;
-import java.util.HashSet;
 public class Lotto {
 
-    public static void main(String[] args) {
-        Random num = new Random();
-        Set<Integer> numbers = new HashSet<>();
-        while (numbers.size() < 6) {
-            int number = num.nextInt(49) + 1;
-            numbers.add(number);
+  public static void main(String[] args) {
+    Random num = new Random();
+    int[] numbers = new int[6];
+
+    for (int i = 0; i < 6; i++) {
+      numbers[i] = num.nextInt(49) + 1;
+      for (int Y = 0; Y < i; Y++) {
+        if (numbers[i] == numbers[Y]) {
+          i--;
         }
-        for (int number : numbers) {
-            System.out.print(number + " ");
-        }
+      }
     }
-    
+    for (int i = 0; i < numbers.length; i++) {
+        int number = numbers[i];
+        System.out.print(number + " ");
+    }
+  }
 }
