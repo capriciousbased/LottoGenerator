@@ -18,7 +18,10 @@ jobs:
         run: echo "Hello World!"
 
       - name: Display changed files
+        id: changedPath
         run: |
           echo "Changed files:"
-          CHANGED_FILE=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
-          echo "CHANGED_FILE"
+          git config --global --add safe.directory ${{github.}}
+          CHANGED_FILE=$(git diff --name-status ${{ github.event.before }} ${{ github.sha }}) >> filechange.txt
+          cat filechange.txt
+        shell: bash
