@@ -1,8 +1,27 @@
-name: hello-world
-on: push
+name: LottoGenerate Runner
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
 jobs:
   my-job:
     runs-on: ubuntu-latest
+
     steps:
-      - name: my-step
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Hello-World-step
         run: echo "Hello World!"
+
+      - name: Display changed files
+        id: changedPath
+        run: |
+          echo "Changed files:"
+          git config --global --add safe.directory ${{github.}}
+          CHANGED_FILE=$(git diff --name-status ${{ github.event.before }} ${{ github.sha }}) >> filechange.txt
+          cat filechange.txt
+        shell: bash
