@@ -23,5 +23,5 @@ jobs:
         id: changedPath
         run: |
           echo "Changed files:"
-          echo "test working with producer folder"
-          echo "test2 working with producer folder test2"
+          echo "test3 added and working with producer folder"
+          echo "test and test2 removed working with producer folder test2"
