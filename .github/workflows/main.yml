@@ -21,5 +21,3 @@ jobs:
         id: changedPath
         run: |
           echo "Changed files:"
-          CHANGED_FILE=$(git diff --name-status ${{ github.event.before }} ${{ github.sha }}) >> filechange.txt
-          cat filechange.txt
