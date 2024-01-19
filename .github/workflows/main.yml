@@ -24,4 +24,3 @@ jobs:
           git config --global --add safe.directory ${{github.}}
           CHANGED_FILE=$(git diff --name-status ${{ github.event.before }} ${{ github.sha }}) >> filechange.txt
           cat filechange.txt
-        shell: bash
