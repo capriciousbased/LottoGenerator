@@ -21,3 +21,5 @@ jobs:
         id: changedPath
         run: |
           echo "Changed files:"
+          CHANGED_FILE=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+          echo "$CHANGED_FILE"
