@@ -17,22 +17,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Hello-World-step
+      - name: "Hello-World-step"
         run: echo "Hello World!"
 
-      - name: Set up Google Cloud SDK
+      - name: "Set up Google Cloud SDK"
         uses: "google-github-actions/setup-gcloud@v1"
         with:
           version: ">= 390.0.0"
 
-      - name: Test gcloud
+      - name: "Test gcloud"
         run: |
           gcloud version
           gcloud auth list
 
-      - name: Install sops
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y sops
-          sops --version
-          echo"Sops Install"
+      - name: "Install sops"
+        uses: mdgreenwald/mozilla-sops-action@v1.4.1
+        id: install
+      - name: "final-step"
+        run: echo "install done"
