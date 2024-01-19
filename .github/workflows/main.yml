@@ -1,5 +1,6 @@
 name: LottoGenerate Runner
 on:
+  push:
   pull_request:
     types:
       - opened
@@ -16,11 +17,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Hello-World-step
+      - name: "Hello-World-step"
         run: echo "Hello World!"
 
-      - name: Display changed files
-        id: changedPath
+      - name: "Set up Google Cloud SDK"
+        uses: "google-github-actions/setup-gcloud@v1"
+        with:
+          version: ">= 390.0.0"
+
+      - name: "Test gcloud"
         run: |
-          echo "Changed files:"
-          echo "test working with producer folder"
+          gcloud version
+          gcloud auth list
+
+      - name: "Install sops"
+        uses: mdgreenwald/mozilla-sops-action@v1.4.1
+        id: install
+      - name: "final-step"
+        run: echo "install done"
