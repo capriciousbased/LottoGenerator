@@ -5,6 +5,8 @@ on:
       - opened
       - synchronize
       - reopened
+    paths:
+      - "producer/*"
 
 jobs:
   my-job:
@@ -21,5 +23,4 @@ jobs:
         id: changedPath
         run: |
           echo "Changed files:"
-          CHANGED_FILE=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
-          echo "$CHANGED_FILE"
+          echo "test working with producer folder"
