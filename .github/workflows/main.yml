@@ -1,5 +1,6 @@
 name: LottoGenerate Runner
 on:
+  push:
   pull_request:
     types:
       - opened
@@ -19,9 +20,19 @@ jobs:
       - name: Hello-World-step
         run: echo "Hello World!"
 
-      - name: Display changed files
-        id: changedPath
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          version: ">= 390.0.0"
+
+      - name: Test gcloud
         run: |
-          echo "Changed files:"
-          echo "test3 added and working with producer folder"
-          echo "test and test2 removed working with producer folder test2"
+          gcloud version
+          gcloud auth list
+
+      - name: Install sops
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sops
+          sops --version
+          echo"Sops Install"
