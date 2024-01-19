@@ -21,7 +21,7 @@ jobs:
         run: echo "Hello World!"
 
       - name: Set up Google Cloud SDK
-        uses: "google-github-actions/setup-gcloud@master"
+        uses: "google-github-actions/setup-gcloud@v1"
         with:
           version: ">= 390.0.0"
 
